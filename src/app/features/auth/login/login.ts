@@ -35,7 +35,7 @@ export class Login {
         console.log('Connexion réussie');
         console.log(response.access_token);
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/admin-dashboard']);
       },
 
       error: (err) => {
@@ -44,4 +44,6 @@ export class Login {
       }
     });
   }
+  
+
 }
