@@ -2,9 +2,10 @@ import { Routes } from '@angular/router';
 import { Login } from './features/auth/login/login';
 import { Register } from './features/auth/register/register';
 import { AdminDashboard } from './features/dashboard/admin-dashboard/admin-dashboard';
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
-    {
+  {
     path: 'login',
     component: Login
   },
@@ -15,6 +16,13 @@ export const routes: Routes = [
   },
   {
     path: 'admin-dashboard',
-    component: AdminDashboard
+    component: AdminDashboard,
+    canActivate: [authGuard]
+
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   }
 ];
