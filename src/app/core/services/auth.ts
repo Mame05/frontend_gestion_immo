@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environments';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -34,4 +35,34 @@ export class Auth {
   isLoggedIn(): boolean {
     return !!this.getToken();
   }
+
+  getUserRole(): string | null {
+  const token = this.getToken();
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const decoded: any = jwtDecode(token);
+    return decoded.role;
+  } catch {
+    return null;
+  }
+ }
+
+ getUserEmail(): string | null {
+  const token = this.getToken();
+
+  if (!token) {
+    return null;
+  }
+
+  try {
+    const decoded: any = jwtDecode(token);
+    return decoded.email;
+  } catch {
+    return null;
+  }
+ }
 }

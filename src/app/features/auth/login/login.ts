@@ -32,10 +32,15 @@ export class Login {
 
         this.authService.saveToken(response.access_token);
 
-        console.log('Connexion réussie');
-        console.log(response.access_token);
+        const role = this.authService.getUserRole();
 
-        this.router.navigate(['/admin-dashboard']);
+        if (role === 'ADMIN') {
+          this.router.navigate(['/admin-dashboard']);
+        } else if (role === 'AGENCE') {
+          this.router.navigate(['/agence/dashboard']);
+        } else {
+          this.router.navigate(['/client/dashboard']);
+        }
       },
 
       error: (err) => {
