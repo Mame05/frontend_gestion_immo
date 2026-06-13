@@ -37,7 +37,7 @@ export class Login {
         if (role === 'ADMIN') {
           this.router.navigate(['/admin-dashboard']);
         } else if (role === 'AGENCE') {
-          this.router.navigate(['/agence/dashboard']);
+          this.router.navigate(['/agence-dashboard']);
         } else {
           this.router.navigate(['/client/dashboard']);
         }

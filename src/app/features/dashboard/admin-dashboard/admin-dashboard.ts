@@ -21,4 +21,7 @@ export class AdminDashboard {
   this.authService.logout();
   this.router.navigate(['/login']);
  }
+ test() {
+  this.router.navigate(['/agence-dashboard']);
+}
 }

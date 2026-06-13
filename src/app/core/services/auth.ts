@@ -51,7 +51,7 @@ export class Auth {
   }
  }
 
- getUserEmail(): string | null {
+ /*getUserEmail(): string | null {
   const token = this.getToken();
 
   if (!token) {
@@ -64,5 +64,5 @@ export class Auth {
   } catch {
     return null;
   }
- }
+ }*/
 }

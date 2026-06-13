@@ -4,6 +4,7 @@ import { Register } from './features/auth/register/register';
 import { AdminDashboard } from './features/dashboard/admin-dashboard/admin-dashboard';
 import { authGuard } from './core/guards/auth-guard';
 import { AgenceDashboard } from './features/dashboard/agence-dashboard/agence-dashboard';
+import { roleGuard } from './core/guards/role-guard';
 
 export const routes: Routes = [
   {
@@ -18,16 +19,32 @@ export const routes: Routes = [
   {
     path: 'admin-dashboard',
     component: AdminDashboard,
-    canActivate: [authGuard]
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['ADMIN']
+    }
 
   },
 
   {
     path: 'agence-dashboard',
     component: AgenceDashboard,
-    canActivate: [authGuard]
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['AGENCE']
+    }
 
   },
+
+   /*{
+    path: 'client/dashboard',
+    component: DashboardClient,
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: ['CLIENT']
+    }
+  },*/
+
   {
     path: '',
     redirectTo: 'login',
